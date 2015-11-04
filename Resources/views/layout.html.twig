@@ -1,9 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <!-- Always force latest IE rendering engine (even in intranet) and Chrome Frame -->
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
     <title>{{ apiName }}</title>
     <style type="text/css">
         {{ css|raw }}
@@ -20,8 +21,12 @@
             {% if bodyFormats|length > 0 %}
                 body format:
                 <select id="body_format">
-                    {% if 'form' in bodyFormats %}<option value="form"{{ defaultBodyFormat == 'form' ? ' selected' : '' }}>Form Data</option>{% endif %}
-                    {% if 'json' in bodyFormats %}<option value="json"{{ defaultBodyFormat == 'json' ? ' selected' : '' }}>JSON</option>{% endif %}
+                    {% if 'form' in bodyFormats %}
+                    <option value="form"{{ defaultBodyFormat == 'form' ? ' selected' : '' }}>Form
+                        Data</option>{% endif %}
+                    {% if 'json' in bodyFormats %}
+                    <option value="json"{{ defaultBodyFormat == 'json' ? ' selected' : '' }}>
+                            JSON</option>{% endif %}
                 </select>
             {% endif %}
             {% if requestFormats|length > 0 %}
@@ -48,7 +53,7 @@
             {% endif %}
         </div>
     {% endif %}
-    <br style="clear: both;" />
+    <br style="clear: both;"/>
 </div>
 {% include motdTemplate %}
 <div class="container" id="resources_container">
@@ -61,18 +66,18 @@
 </p>
 <script type="text/javascript">
 
-    var getHash = function() {
+    var getHash = function () {
         return window.location.hash || '';
     };
 
-    var setHash = function(hash) {
+    var setHash = function (hash) {
         window.location.hash = hash;
     };
 
-    var clearHash = function() {
+    var clearHash = function () {
         var scrollTop, scrollLeft;
 
-        if(typeof history === 'object' && typeof history.pushState === 'function') {
+        if (typeof history === 'object' && typeof history.pushState === 'function') {
             history.replaceState('', document.title, window.location.pathname + window.location.search);
         } else {
             scrollTop = document.body.scrollTop;
@@ -85,11 +90,11 @@
         }
     };
 
-    $(window).load(function() {
-        var id = getHash().substr(1).replace( /([:\.\[\]\{\}|])/g, "\\$1");
+    $(window).load(function () {
+        var id = getHash().substr(1).replace(/([:\.\[\]\{\}|])/g, "\\$1");
         var elem = $('#' + id);
         if (elem.length) {
-            setTimeout(function() {
+            setTimeout(function () {
                 $('body,html').scrollTop(elem.position().top);
             });
             elem.find('.toggler').click();
@@ -104,10 +109,10 @@
         {% endif %}
     });
 
-    $('.toggler').click(function(event) {
+    $('.toggler').click(function (event) {
         var contentContainer = $(this).next();
 
-        if(contentContainer.is(':visible')) {
+        if (contentContainer.is(':visible')) {
             clearHash();
         } else {
             setHash($(this).data('href'));
@@ -117,7 +122,7 @@
         return false;
     });
 
-    $('.action-show-hide, .section > h1').on('click', function(){
+    $('.action-show-hide, .section > h1').on('click', function () {
         var section = $(this).parents('.section').first();
         if (section.hasClass('active')) {
             section.removeClass('active');
@@ -129,7 +134,7 @@
 
     });
 
-    $('.action-list').on('click', function(){
+    $('.action-list').on('click', function () {
         var section = $(this).parents('.section').first();
         if (!section.hasClass('active')) {
             section.addClass('active');
@@ -138,7 +143,7 @@
         section.find('.operation > .content').slideUp('fast');
     });
 
-    $('.action-expand').on('click', function(){
+    $('.action-expand').on('click', function () {
         var section = $(this).parents('.section').first();
         if (!section.hasClass('active')) {
             section.addClass('active');
@@ -168,11 +173,12 @@
             localStorage.removeItem(buildKey(key));
         }
     } else {
-        getStoredValue = storeValue = deleteStoredValue = function (){};
+        getStoredValue = storeValue = deleteStoredValue = function () {
+        };
     }
 
-    var loadStoredAuthParams = function() {
-        $.each(apiAuthKeys, function(_, value) {
+    var loadStoredAuthParams = function () {
+        $.each(apiAuthKeys, function (_, value) {
             var elm = $('#' + value);
             if (elm.length) {
                 elm.val(getStoredValue(value));
@@ -180,7 +186,7 @@
         });
     }
 
-    var setParameterType = function ($context,setType) {
+    var setParameterType = function ($context, setType) {
         // no 2nd argument, use default from parameters
         if (typeof setType == "undefined") {
             setType = $context.parent().attr("data-dataType");
@@ -201,15 +207,15 @@
             placeholder += "Value";
         }
 
-        switch(setType) {
+        switch (setType) {
             case "boolean":
                 $('<select class="value"><option value=""></option><option value="1">True</option><option value="0">False</option></select>').insertAfter($context);
                 break;
             case "file":
-                $('<input type="file" class="value" placeholder="'+ placeholder +'">').insertAfter($context);
+                $('<input type="file" class="value" placeholder="' + placeholder + '">').insertAfter($context);
                 break;
             default:
-                $('<input type="text" class="value" placeholder="'+ placeholder +'">').insertAfter($context);
+                $('<input type="text" class="value" placeholder="' + placeholder + '">').insertAfter($context);
         }
     };
 
@@ -254,7 +260,7 @@
 
     var unflattenDict = function (body) {
         var found = true;
-        while(found) {
+        while (found) {
             found = false;
 
             for (var key in body) {
@@ -262,7 +268,7 @@
                 var value = body[key];
                 var dictMatch = key.match(/^(.+)\[([^\]]+)\]$/);
 
-                if(dictMatch) {
+                if (dictMatch) {
                     found = true;
                     okey = dictMatch[1];
                     var subkey = dictMatch[2];
@@ -277,8 +283,8 @@
         return body;
     };
 
-    $('#save_api_auth').click(function(event) {
-        $.each(apiAuthKeys, function(_, value) {
+    $('#save_api_auth').click(function (event) {
+        $.each(apiAuthKeys, function (_, value) {
             var elm = $('#' + value);
             if (elm.length) {
                 storeValue(value, elm.val());
@@ -286,8 +292,8 @@
         });
     });
 
-    $('#clear_api_auth').click(function(event) {
-        $.each(apiAuthKeys, function(_, value) {
+    $('#clear_api_auth').click(function (event) {
+        $.each(apiAuthKeys, function (_, value) {
             deleteStoredValue(value);
             var elm = $('#' + value);
             if (elm.length) {
@@ -296,7 +302,7 @@
         });
     });
 
-    $('.tabs li').click(function() {
+    $('.tabs li').click(function () {
         var contentGroup = $(this).parents('.content');
 
         $('.pane.selected', contentGroup).removeClass('selected');
@@ -306,7 +312,7 @@
         $(this).addClass('selected');
     });
 
-    var getJsonCollapseHtml = function(sectionOpenCharacter) {
+    var getJsonCollapseHtml = function (sectionOpenCharacter) {
         var $toggler = $('<span>').addClass('json-collapse-section').
                 attr('data-section-open-character', sectionOpenCharacter).
                 append($('<span>').addClass('json-collapse-marker')
@@ -316,13 +322,13 @@
     };
 
     var attachCollapseMarker = function (prettifiedJsonString) {
-        prettifiedJsonString = prettifiedJsonString.replace(/(\{|\[)\n/g, function(match, sectionOpenCharacter) {
+        prettifiedJsonString = prettifiedJsonString.replace(/(\{|\[)\n/g, function (match, sectionOpenCharacter) {
             return getJsonCollapseHtml(sectionOpenCharacter) + '<span class="json-collapse-content">\n';
         });
         return prettifiedJsonString.replace(/([^\[][\}\]],?)\n/g, '$1</span>\n');
     };
 
-    var prettifyResponse = function(text) {
+    var prettifyResponse = function (text) {
         try {
             var data = typeof text === 'string' ? JSON.parse(text) : text;
             text = JSON.stringify(data, undefined, '  ');
@@ -333,7 +339,7 @@
         return $('<div>').text(text).html();
     };
 
-    var displayFinalUrl = function(xhr, method, url, data, container) {
+    var displayFinalUrl = function (xhr, method, url, data, container) {
         if ('GET' == method && !jQuery.isEmptyObject(data)) {
             var separator = url.indexOf('?') >= 0 ? '&' : '?';
             url = url + separator + decodeURIComponent(jQuery.param(data));
@@ -342,7 +348,7 @@
         container.text(method + ' ' + url);
     };
 
-    var displayProfilerUrl = function(xhr, link, container) {
+    var displayProfilerUrl = function (xhr, link, container) {
         var profilerUrl = xhr.getResponseHeader('X-Debug-Token-Link');
         if (profilerUrl) {
             link.attr('href', profilerUrl);
@@ -353,7 +359,7 @@
         }
     }
 
-    var displayResponseData = function(xhr, container) {
+    var displayResponseData = function (xhr, container) {
         var data = xhr.responseText;
 
         container.data('raw-response', data);
@@ -364,14 +370,14 @@
         container.parents('.pane').find('.to-raw').text('Raw');
     };
 
-    var displayResponseHeaders = function(xhr, container) {
+    var displayResponseHeaders = function (xhr, container) {
         var text = xhr.status + ' ' + xhr.statusText + "\n\n";
         text += xhr.getAllResponseHeaders();
 
         container.text(text);
     };
 
-    var displayResponse = function(xhr, method, url, data, result_container) {
+    var displayResponse = function (xhr, method, url, data, result_container) {
         displayFinalUrl(xhr, method, url, data, $('.url', result_container));
         displayProfilerUrl(xhr, $('.profiler-link', result_container), $('.profiler', result_container));
         displayResponseData(xhr, $('.response', result_container));
@@ -380,7 +386,7 @@
         result_container.show();
     };
 
-    $('.pane.sandbox form').submit(function() {
+    $('.pane.sandbox form').submit(function () {
         var url = $(this).attr('action'),
                 method = $('[name="header_method"]', this).val(),
                 self = this,
@@ -399,7 +405,7 @@
         var requestFormatMethod = '{{ requestFormatMethod }}';
         if (requestFormatMethod == 'format_param') {
             params['_format'] = $('#request_format option:selected').text();
-            formData.append('_format',$('#request_format option:selected').text());
+            formData.append('_format', $('#request_format option:selected').text());
         } else if (requestFormatMethod == 'accept_header') {
             headers['Accept'] = $('#request_format').val();
         }
@@ -407,7 +413,7 @@
         // set default bodyFormat
         var bodyFormat = $('#body_format').val() || '{{ defaultBodyFormat }}';
 
-        if(!('Content-type' in headers)) {
+        if (!('Content-type' in headers)) {
             if (bodyFormat == 'form') {
                 headers['Content-type'] = 'application/x-www-form-urlencoded';
             } else {
@@ -416,7 +422,7 @@
         }
 
         var hasFileTypes = false;
-        $('.parameters .tuple_type', $(this)).each(function() {
+        $('.parameters .tuple_type', $(this)).each(function () {
             if ($(this).val() == 'file') {
                 hasFileTypes = true;
             }
@@ -434,25 +440,25 @@
 
         if (hasFileTypes) {
             // retrieve all the parameters to send for file upload
-            $('.parameters .tuple', $(this)).each(function() {
+            $('.parameters .tuple', $(this)).each(function () {
                 var key, value;
 
                 key = $('.key', $(this)).val();
-                if ($('.value', $(this)).attr('type') === 'file' ) {
+                if ($('.value', $(this)).attr('type') === 'file') {
                     value = $('.value', $(this)).prop('files')[0];
                 } else {
                     value = $('.value', $(this)).val();
                 }
 
                 if (value) {
-                    formData.append(key,value);
+                    formData.append(key, value);
                 }
             });
         }
 
 
         // retrieve all the parameters to send
-        $('.parameters .tuple', $(this)).each(function() {
+        $('.parameters .tuple', $(this)).each(function () {
             var key, value;
 
             key = $('.key', $(this)).val();
@@ -469,11 +475,8 @@
         });
 
 
-
-
-
         // retrieve the additional headers to send
-        $('.headers .tuple', $(this)).each(function() {
+        $('.headers .tuple', $(this)).each(function () {
             var key, value;
 
             key = $('.key', $(this)).val();
@@ -491,7 +494,8 @@
                 url = url.replace('{' + key + '}', params[key]);
                 delete params[key];
             }
-        };
+        }
+        ;
 
         // merge additional params back to real params object
         if (!$.isEmptyObject(doubledParams)) {
@@ -503,7 +507,7 @@
 
         // append the query authentication
         var api_key_val = $('#api_key').val();
-        if (authentication_delivery == 'query' && api_key_val.length>0) {
+        if (authentication_delivery == 'query' && api_key_val.length > 0) {
             url += url.indexOf('?') > 0 ? '&' : '?';
             url += api_key_parameter + '=' + api_key_val;
         }
@@ -540,6 +544,23 @@
                     if (bodyArray[obj] == undefined) {
                         bodyArray[obj] = {};
                     }
+                    pointerKey = obj + ' : ' + index;
+                    plKey = $(this).find('input[value="' + pointerKey + '"]').next().next().next().attr('placeholder');
+                    keyType = plKey.substr(plKey.indexOf('[') + 1, plKey.indexOf(']') - 1);
+                    switch (keyType) {
+                        case 'integer':
+                            if (!isNaN(parseInt(params[key]))) {
+                                params[key] = parseInt(params[key]);
+                            }
+                            break;
+                        case 'number':
+                        case 'double':
+                            if (!isNaN(parseFloat(params[key]))) {
+                                params[key] = parseFloat(params[key]);
+                            }
+                            break;
+                    }
+
                     bodyArray[obj][index] = params[key];
                 }
             }
@@ -550,7 +571,7 @@
         var data = content.length ? content : body;
 
         var ajaxOptions = {
-            url: (url.indexOf('http')!=0?endpoint:'') + url,
+            url: (url.indexOf('http') != 0 ? endpoint : '') + url,
             type: method,
             data: data,
             headers: headers,
@@ -572,7 +593,7 @@
                     xhr.setRequestHeader(api_key_parameter, value);
                 }
             },
-            complete: function(xhr) {
+            complete: function (xhr) {
                 displayResponse(xhr, method, url, data, result_container);
 
                 // and enable them back
@@ -593,18 +614,18 @@
         return false;
     });
 
-    $('.operations').on('click', '.operation > .heading', function(e) {
+    $('.operations').on('click', '.operation > .heading', function (e) {
         if (history.pushState) {
             history.pushState(null, null, $(this).data('href'));
             e.preventDefault();
         }
     });
 
-    $(document).on('click', '.json-collapse-section', function() {
+    $(document).on('click', '.json-collapse-section', function () {
         var openChar = $(this).data('section-open-character'),
                 closingChar = (openChar == '{' ? '}' : ']');
         if ($(this).next('.json-collapse-content').is(':visible')) {
-            $(this).html('&oplus;' +  openChar + '...' + closingChar);
+            $(this).html('&oplus;' + openChar + '...' + closingChar);
         } else {
             $(this).html('&#9663;' + $(this).data('section-open-character'));
         }
@@ -619,19 +640,19 @@
         }, 100);
     });
 
-    $('.pane.sandbox').on('click', '.to-raw', function(e) {
+    $('.pane.sandbox').on('click', '.to-raw', function (e) {
         renderRawBody($(this).parents('.pane').find('.response'));
 
         e.preventDefault();
     });
 
-    $('.pane.sandbox').on('click', '.to-prettify', function(e) {
+    $('.pane.sandbox').on('click', '.to-prettify', function (e) {
         renderPrettifiedBody($(this).parents('.pane').find('.response'));
 
         e.preventDefault();
     });
 
-    $('.pane.sandbox').on('click', '.to-expand, .to-shrink', function(e) {
+    $('.pane.sandbox').on('click', '.to-expand, .to-shrink', function (e) {
         var $headers = $(this).parents('.result').find('.headers');
         var $label = $(this).parents('.result').find('a.to-expand');
 
@@ -650,19 +671,18 @@
 
 
     // sets the correct parameter type on load
-    $('.pane.sandbox .tuple_type').each(function() {
+    $('.pane.sandbox .tuple_type').each(function () {
         setParameterType($(this));
     });
 
 
     // handles parameter type change
-    $('.pane.sandbox').on('change', '.tuple_type', function() {
-        setParameterType($(this),$(this).val());
+    $('.pane.sandbox').on('change', '.tuple_type', function () {
+        setParameterType($(this), $(this).val());
     });
 
 
-
-    $('.pane.sandbox').on('click', '.add_parameter', function() {
+    $('.pane.sandbox').on('click', '.add_parameter', function () {
         var html = $(this).parents('.pane').find('.parameters_tuple_template').html();
 
         $(this).before(html);
@@ -670,7 +690,7 @@
         return false;
     });
 
-    $('.pane.sandbox').on('click', '.add_header', function() {
+    $('.pane.sandbox').on('click', '.add_header', function () {
         var html = $(this).parents('.pane').find('.headers_tuple_template').html();
 
         $(this).before(html);
@@ -678,11 +698,11 @@
         return false;
     });
 
-    $('.pane.sandbox').on('click', '.remove', function() {
+    $('.pane.sandbox').on('click', '.remove', function () {
         $(this).parent().remove();
     });
 
-    $('.pane.sandbox').on('click', '.set-content-type', function(e) {
+    $('.pane.sandbox').on('click', '.set-content-type', function (e) {
         var html;
         var $element;
         var $headers = $(this).parents('form').find('.headers');
@@ -694,7 +714,7 @@
             return;
         }
 
-        $headers.find('input.key').each(function() {
+        $headers.find('input.key').each(function () {
             if ($.trim($(this).val().toLowerCase()) === 'content-type') {
                 $element = $(this).parents('p');
                 return false;
@@ -722,7 +742,7 @@
     var search = window.location.search;
     var api_key_start = search.indexOf(api_key_parameter) + api_key_parameter.length + 1;
 
-    if (api_key_start > 0 ) {
+    if (api_key_start > 0) {
         var api_key_end = search.indexOf('&', api_key_start);
 
         var api_key = -1 == api_key_end
