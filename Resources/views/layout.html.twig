@@ -546,7 +546,11 @@
                     }
                     pointerKey = obj + ' : ' + index;
                     plKey = $(this).find('input[value="' + pointerKey + '"]').next().next().next().attr('placeholder');
-                    keyType = plKey.substr(plKey.indexOf('[') + 1, plKey.indexOf(']') - 1);
+                    if (plKey == undefined) {
+                        keyType = 'boolean';
+                    } else {
+                        keyType = plKey.substr(plKey.indexOf('[') + 1, plKey.indexOf(']') - 1);
+                    }
 
                     if (-1 !== keyType.indexOf('|')) {
                         splitKeyType = keyType.split('|');
@@ -559,6 +563,13 @@
                         case 'integer':
                             if (!isNaN(parseInt(params[key]))) {
                                 params[key] = parseInt(params[key]);
+                            }
+                            break;
+                        case 'boolean':
+                            if (parseInt(params[key]) === 1) {
+                                params[key] = true;
+                            } else {
+                                params[key] = false;
                             }
                             break;
                         case 'number':
