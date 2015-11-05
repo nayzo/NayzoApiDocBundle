@@ -547,6 +547,14 @@
                     pointerKey = obj + ' : ' + index;
                     plKey = $(this).find('input[value="' + pointerKey + '"]').next().next().next().attr('placeholder');
                     keyType = plKey.substr(plKey.indexOf('[') + 1, plKey.indexOf(']') - 1);
+
+                    if (-1 !== keyType.indexOf('|')) {
+                        splitKeyType = keyType.split('|');
+                        if (-1 === $.inArray('string', splitKeyType)) {
+                            keyType = splitKeyType[0];
+                        }
+                    }
+
                     switch (keyType) {
                         case 'integer':
                             if (!isNaN(parseInt(params[key]))) {
