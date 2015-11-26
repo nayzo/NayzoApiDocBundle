@@ -1,17 +1,17 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Parser;
+namespace Nayzo\ApiDocBundle\Parser;
 
-use Nelmio\ApiDocBundle\DataTypes;
+use Nayzo\ApiDocBundle\DataTypes;
 use Symfony\Component\Form\Exception\FormException;
 use Symfony\Component\Form\Exception\InvalidArgumentException;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
@@ -174,7 +174,7 @@ class FormTypeParser implements ParserInterface
                         /**
                          * TODO: Implement a better handling of unsupported types
                          * This is just a temporary workaround for don't breaking docs page in case of unsupported types
-                         * like the entity type https://github.com/nelmio/NelmioApiDocBundle/issues/94
+                         * like the entity type https://github.com/nayzo/NayzoApiDocBundle/issues/94
                          */
                         $addDefault = false;
                         try {

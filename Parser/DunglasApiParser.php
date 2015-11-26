@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Parser;
+namespace Nayzo\ApiDocBundle\Parser;
 
 use Dunglas\ApiBundle\Api\ResourceCollectionInterface;
 use Dunglas\ApiBundle\Api\ResourceInterface;
 use Dunglas\ApiBundle\Mapping\AttributeMetadataInterface;
 use Dunglas\ApiBundle\Mapping\ClassMetadataFactoryInterface;
-use Nelmio\ApiDocBundle\DataTypes;
+use Nayzo\ApiDocBundle\DataTypes;
 use PropertyInfo\Type;
 
 /**

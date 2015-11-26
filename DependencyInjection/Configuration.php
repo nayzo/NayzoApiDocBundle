@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\DependencyInjection;
+namespace Nayzo\ApiDocBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -20,7 +20,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $treeBuilder
-            ->root('nelmio_api_doc')
+            ->root('nayzo_api_doc')
             ->children()
                 ->scalarNode('name')->defaultValue('API documentation')->end()
                 ->arrayNode('exclude_sections')
@@ -32,7 +32,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('motd')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('template')->defaultValue('NelmioApiDocBundle::Components/motd.html.twig')->end()
+                        ->scalarNode('template')->defaultValue('NayzoApiDocBundle::Components/motd.html.twig')->end()
                     ->end()
                 ->end()
                 ->arrayNode('request_listener')

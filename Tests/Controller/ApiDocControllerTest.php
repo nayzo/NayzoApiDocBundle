@@ -6,13 +6,13 @@
  * Time: 4:35 PM
  */
 
-namespace NelmioApiDocBundle\Tests\Controller;
-use Nelmio\ApiDocBundle\Tests\WebTestCase;
+namespace NayzoApiDocBundle\Tests\Controller;
+use Nayzo\ApiDocBundle\Tests\WebTestCase;
 
 /**
  * Class ApiDocControllerTest
  *
- * @package NelmioApiDocBundle\Tests\Controller
+ * @package NayzoApiDocBundle\Tests\Controller
  * @author Bez Hermoso <bez@activelamp.com>
  */
 class ApiDocControllerTest extends WebTestCase

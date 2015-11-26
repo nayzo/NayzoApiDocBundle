@@ -1,6 +1,6 @@
 <?php
 
-namespace Nelmio\ApiDocBundle\DependencyInjection;
+namespace Nayzo\ApiDocBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -10,15 +10,15 @@ class RegisterExtractorParsersPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (false === $container->hasDefinition('nelmio_api_doc.extractor.api_doc_extractor')) {
+        if (false === $container->hasDefinition('nayzo_api_doc.extractor.api_doc_extractor')) {
             return;
         }
 
-        $definition = $container->getDefinition('nelmio_api_doc.extractor.api_doc_extractor');
+        $definition = $container->getDefinition('nayzo_api_doc.extractor.api_doc_extractor');
 
         //find registered parsers and sort by priority
         $sortedParsers = array();
-        foreach ($container->findTaggedServiceIds('nelmio_api_doc.extractor.parser') as $id => $tagAttributes) {
+        foreach ($container->findTaggedServiceIds('nayzo_api_doc.extractor.parser') as $id => $tagAttributes) {
             foreach ($tagAttributes as $attributes) {
                 $priority = isset($attributes['priority']) ? $attributes['priority'] : 0;
                 $sortedParsers[$priority][] = $id;

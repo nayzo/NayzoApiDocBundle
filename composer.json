@@ -1,17 +1,17 @@
 {
-    "name": "nzo/api-doc-bundle",
-    "description": "Generates documentation for your REST API from annotations",
-    "keywords": ["api", "documentation", "doc", "rest"],
+    "name": "nayzo/api-doc-bundle",
+    "description": "An enhanced version of the NelmioApiDocBundle bundle to generates documentation for your REST API from annotations",
+    "keywords": ["api", "documentation", "doc", "rest", "nzo"],
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
         {
-            "name": "Nelmio",
-            "homepage": "http://nelm.io"
+            "name": "Nayzo",
+            "homepage": "http://alakhefifi.com"
         },
         {
             "name": "Symfony Community",
-            "homepage": "https://github.com/nelmio/NelmioApiDocBundle/contributors"
+            "homepage": "https://github.com/nayzo/NayzoApiDocBundle/contributors"
         },
         {
             "name": "Ala Eddine Khefifi",
@@ -50,7 +50,7 @@
         "jms/serializer": "For making use of serializer information in the doc."
     },
     "autoload": {
-        "psr-0": { "Nelmio\\ApiDocBundle": "" }
+        "psr-0": { "Nayzo\\ApiDocBundle": "" }
     },
-    "target-dir": "Nelmio/ApiDocBundle"
+    "target-dir": "Nayzo/ApiDocBundle"
 }

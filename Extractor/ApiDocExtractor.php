@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Extractor;
+namespace Nayzo\ApiDocBundle\Extractor;
 
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Nelmio\ApiDocBundle\DataTypes;
-use Nelmio\ApiDocBundle\Parser\ParserInterface;
-use Nelmio\ApiDocBundle\Parser\PostParserInterface;
-use Nelmio\ApiDocBundle\Util\DocCommentExtractor;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
+use Nayzo\ApiDocBundle\DataTypes;
+use Nayzo\ApiDocBundle\Parser\ParserInterface;
+use Nayzo\ApiDocBundle\Parser\PostParserInterface;
+use Nayzo\ApiDocBundle\Util\DocCommentExtractor;
 use Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +26,7 @@ use Symfony\Component\Routing\RouterInterface;
 
 class ApiDocExtractor
 {
-    const ANNOTATION_CLASS = 'Nelmio\\ApiDocBundle\\Annotation\\ApiDoc';
+    const ANNOTATION_CLASS = 'Nayzo\\ApiDocBundle\\Annotation\\ApiDoc';
 
     /**
      * @var ContainerInterface
@@ -120,7 +120,7 @@ class ApiDocExtractor
     {
         $array = array();
         $resources = array();
-        $excludeSections = $this->container->getParameter('nelmio_api_doc.exclude_sections');
+        $excludeSections = $this->container->getParameter('nayzo_api_doc.exclude_sections');
 
         foreach ($routes as $route) {
             if (!$route instanceof Route) {

@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Tests\Extractor;
+namespace Nayzo\ApiDocBundle\Tests\Extractor;
 
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Nelmio\ApiDocBundle\Extractor\ApiDocExtractor;
-use Nelmio\ApiDocBundle\Tests\WebTestCase;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
+use Nayzo\ApiDocBundle\Extractor\ApiDocExtractor;
+use Nayzo\ApiDocBundle\Tests\WebTestCase;
 
 class ApiDocExtractorTest extends WebTestCase
 {
@@ -34,7 +34,7 @@ class ApiDocExtractorTest extends WebTestCase
     public function testAll()
     {
         $container = $this->getContainer();
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
         set_error_handler(array($this, 'handleDeprecation'));
         $data = $extractor->all();
         restore_error_handler();
@@ -56,7 +56,7 @@ class ApiDocExtractorTest extends WebTestCase
             $this->assertArrayHasKey('annotation', $d);
             $this->assertArrayHasKey('resource', $d);
 
-            $this->assertInstanceOf('Nelmio\ApiDocBundle\Annotation\ApiDoc', $d['annotation']);
+            $this->assertInstanceOf('Nayzo\ApiDocBundle\Annotation\ApiDoc', $d['annotation']);
             $this->assertInstanceOf('Symfony\Component\Routing\Route', $d['annotation']->getRoute());
             $this->assertNotNull($d['resource']);
         }
@@ -80,14 +80,14 @@ class ApiDocExtractorTest extends WebTestCase
         $this->assertFalse($a2->isResource());
         $this->assertEquals('create test', $a2->getDescription());
         $this->assertFalse(isset($array2['filters']));
-        $this->assertEquals('Nelmio\ApiDocBundle\Tests\Fixtures\Form\TestType', $a2->getInput());
+        $this->assertEquals('Nayzo\ApiDocBundle\Tests\Fixtures\Form\TestType', $a2->getInput());
 
         $a2 = $data[9]['annotation'];
         $array2 = $a2->toArray();
         $this->assertFalse($a2->isResource());
         $this->assertEquals('create test', $a2->getDescription());
         $this->assertFalse(isset($array2['filters']));
-        $this->assertEquals('Nelmio\ApiDocBundle\Tests\Fixtures\Form\TestType', $a2->getInput());
+        $this->assertEquals('Nayzo\ApiDocBundle\Tests\Fixtures\Form\TestType', $a2->getInput());
 
         $a4 = $data[11]['annotation'];
         $this->assertTrue($a4->isResource());
@@ -100,10 +100,10 @@ class ApiDocExtractorTest extends WebTestCase
     public function testGet()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::indexAction', 'test_route_1');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::indexAction', 'test_route_1');
 
-        $this->assertInstanceOf('Nelmio\ApiDocBundle\Annotation\ApiDoc', $annotation);
+        $this->assertInstanceOf('Nayzo\ApiDocBundle\Annotation\ApiDoc', $annotation);
 
         $this->assertTrue($annotation->isResource());
         $this->assertEquals('index action', $annotation->getDescription());
@@ -112,7 +112,7 @@ class ApiDocExtractorTest extends WebTestCase
         $this->assertTrue(is_array($array['filters']));
         $this->assertNull($annotation->getInput());
 
-        $annotation2 = $extractor->get('nelmio.test.controller:indexAction', 'test_service_route_1');
+        $annotation2 = $extractor->get('nayzo.test.controller:indexAction', 'test_service_route_1');
         $annotation2->getRoute()
             ->setDefault('_controller', $annotation->getRoute()->getDefault('_controller'))
             ->compile(); // compile as we changed a default value
@@ -122,7 +122,7 @@ class ApiDocExtractorTest extends WebTestCase
     public function testGetWithBadController()
     {
         $container = $this->getContainer();
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
         $data = $extractor->get('Undefined\Controller::indexAction', 'test_route_1');
 
         $this->assertNull($data);
@@ -135,12 +135,12 @@ class ApiDocExtractorTest extends WebTestCase
     public function testGetWithBadRoute()
     {
         $container = $this->getContainer();
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $data = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::indexAction', 'invalid_route');
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $data = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::indexAction', 'invalid_route');
 
         $this->assertNull($data);
 
-        $data = $extractor->get('nelmio.test.controller:indexAction', 'invalid_route');
+        $data = $extractor->get('nayzo.test.controller:indexAction', 'invalid_route');
 
         $this->assertNull($data);
     }
@@ -148,12 +148,12 @@ class ApiDocExtractorTest extends WebTestCase
     public function testGetWithInvalidPattern()
     {
         $container = $this->getContainer();
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $data = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController', 'test_route_1');
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $data = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController', 'test_route_1');
 
         $this->assertNull($data);
 
-        $data = $extractor->get('nelmio.test.controller', 'test_service_route_1');
+        $data = $extractor->get('nayzo.test.controller', 'test_service_route_1');
 
         $this->assertNull($data);
     }
@@ -161,12 +161,12 @@ class ApiDocExtractorTest extends WebTestCase
     public function testGetWithMethodWithoutApiDocAnnotation()
     {
         $container = $this->getContainer();
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $data = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::anotherAction', 'test_route_3');
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $data = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::anotherAction', 'test_route_3');
 
         $this->assertNull($data);
 
-        $data = $extractor->get('nelmio.test.controller:anotherAction', 'test_service_route_1');
+        $data = $extractor->get('nayzo.test.controller:anotherAction', 'test_service_route_1');
 
         $this->assertNull($data);
     }
@@ -174,8 +174,8 @@ class ApiDocExtractorTest extends WebTestCase
     public function testGetWithDocComment()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::myCommentedAction', 'test_route_5');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::myCommentedAction', 'test_route_5');
 
         $this->assertNotNull($annotation);
         $this->assertEquals(
@@ -201,8 +201,8 @@ class ApiDocExtractorTest extends WebTestCase
     public function testGetWithAuthentication()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::AuthenticatedAction', 'test_route_13');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::AuthenticatedAction', 'test_route_13');
 
         $this->assertNotNull($annotation);
         $this->assertTrue(
@@ -216,8 +216,8 @@ class ApiDocExtractorTest extends WebTestCase
     public function testGetWithCache()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zCachedAction', 'test_route_23');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::zCachedAction', 'test_route_23');
 
         $this->assertNotNull($annotation);
         $this->assertEquals(
@@ -229,8 +229,8 @@ class ApiDocExtractorTest extends WebTestCase
     public function testGetWithDeprecated()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::DeprecatedAction', 'test_route_14');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::DeprecatedAction', 'test_route_14');
 
         $this->assertNotNull($annotation);
         $this->assertTrue(
@@ -241,19 +241,19 @@ class ApiDocExtractorTest extends WebTestCase
     public function testOutputWithSelectedParsers()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zReturnSelectedParsersOutputAction', 'test_route_19');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::zReturnSelectedParsersOutputAction', 'test_route_19');
 
         $this->assertNotNull($annotation);
         $output = $annotation->getOutput();
 
         $parsers = $output['parsers'];
         $this->assertEquals(
-            "Nelmio\\ApiDocBundle\\Parser\\JmsMetadataParser",
+            "Nayzo\\ApiDocBundle\\Parser\\JmsMetadataParser",
             $parsers[0]
         );
         $this->assertEquals(
-            "Nelmio\\ApiDocBundle\\Parser\\ValidationParser",
+            "Nayzo\\ApiDocBundle\\Parser\\ValidationParser",
             $parsers[1]
         );
         $this->assertCount(2, $parsers);
@@ -262,14 +262,14 @@ class ApiDocExtractorTest extends WebTestCase
     public function testInputWithSelectedParsers()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zReturnSelectedParsersInputAction', 'test_route_20');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::zReturnSelectedParsersInputAction', 'test_route_20');
 
         $this->assertNotNull($annotation);
         $input = $annotation->getInput();
         $parsers = $input['parsers'];
         $this->assertEquals(
-            "Nelmio\\ApiDocBundle\\Parser\\FormTypeParser",
+            "Nayzo\\ApiDocBundle\\Parser\\FormTypeParser",
             $parsers[0]
         );
         $this->assertCount(1, $parsers);
@@ -279,9 +279,9 @@ class ApiDocExtractorTest extends WebTestCase
     {
         $container  = $this->getContainer();
         /** @var ApiDocExtractor $extractor */
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
         /** @var ApiDoc $annotation */
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::requiredParametersAction', 'test_required_parameters');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::requiredParametersAction', 'test_required_parameters');
 
         $parameters = $annotation->getParameters();
         $this->assertTrue($parameters['required_field']['required']);
@@ -291,9 +291,9 @@ class ApiDocExtractorTest extends WebTestCase
     {
         $container  = $this->getContainer();
         /** @var ApiDocExtractor $extractor */
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
         /** @var ApiDoc $annotation */
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::requiredParametersAction', 'test_put_disables_required_parameters');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::requiredParametersAction', 'test_put_disables_required_parameters');
 
         $parameters = $annotation->getParameters();
         $this->assertFalse($parameters['required_field']['required']);
@@ -319,7 +319,7 @@ class ApiDocExtractorTest extends WebTestCase
     public function testViewNamedTest()
     {
         $container = $this->getContainer();
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
         set_error_handler(array($this, 'handleDeprecation'));
         $data = $extractor->all('test');
         restore_error_handler();
@@ -339,7 +339,7 @@ class ApiDocExtractorTest extends WebTestCase
     public function testViewNamedPremium()
     {
         $container = $this->getContainer();
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
         set_error_handler(array($this, 'handleDeprecation'));
         $data = $extractor->all('premium');
         restore_error_handler();
@@ -362,7 +362,7 @@ class ApiDocExtractorTest extends WebTestCase
     public function testForViews($view, $count)
     {
         $container = $this->getContainer();
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
         set_error_handler(array($this, 'handleDeprecation'));
         $data = $extractor->all($view);
         restore_error_handler();

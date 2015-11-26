@@ -1,6 +1,6 @@
 <?php
 
-namespace Nelmio\ApiDocBundle\Tests\Fixtures\Model;
+namespace Nayzo\ApiDocBundle\Tests\Fixtures\Model;
 
 use JMS\Serializer\Annotation as JMS;
 

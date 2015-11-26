@@ -1,6 +1,6 @@
 <?php
 
-namespace Nelmio\ApiDocBundle\Twig\Extension;
+namespace Nayzo\ApiDocBundle\Twig\Extension;
 
 use Michelf\MarkdownExtra;
 
@@ -28,7 +28,7 @@ class MarkdownExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'nelmio_api_doc';
+        return 'nayzo_api_doc';
     }
 
     public function markdown($text)

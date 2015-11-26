@@ -1,17 +1,17 @@
-NelmioApiDocBundle
+NayzoApiDocBundle
 ==================
 
-The **NelmioApiDocBundle** bundle allows you to generate a decent documentation
+The **NayzoApiDocBundle** bundle is an enhanced version of the NelmioApiDocBundle bundle to generate a decent documentation
 for your APIs.
 
 
 Installation
 ------------
 
-Require the `nelmio/api-doc-bundle` package in your composer.json and update
+Require the `nayzo/api-doc-bundle` package in your composer.json and update
 your dependencies.
 
-    $ composer require nelmio/api-doc-bundle
+    $ composer require nayzo/api-doc-bundle
 
 Register the bundle in `app/AppKernel.php`:
 
@@ -21,7 +21,7 @@ public function registerBundles()
 {
     return array(
         // ...
-        new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+        new Nayzo\ApiDocBundle\NayzoApiDocBundle(),
     );
 }
 ```
@@ -30,8 +30,8 @@ Import the routing definition in `routing.yml`:
 
 ```yaml
 # app/config/routing.yml
-NelmioApiDocBundle:
-    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+NayzoApiDocBundle:
+    resource: "@NayzoApiDocBundle/Resources/config/routing.yml"
     prefix:   /api/doc
 ```
 
@@ -39,10 +39,10 @@ Enable the bundle's configuration in `app/config/config.yml`:
 
 ```yaml
 # app/config/config.yml
-nelmio_api_doc: ~
+nayzo_api_doc: ~
 ```
 
-The **NelmioApiDocBundle** requires Twig as a template engine so do not forget
+The **NayzoApiDocBundle** requires Twig as a template engine so do not forget
 to enable it:
 
 ```yaml
@@ -56,7 +56,7 @@ Usage
 -----
 
 The main problem with documentation is to keep it up to date. That's why the
-**NelmioApiDocBundle** uses introspection a lot. Thanks to an annotation, it's
+**NayzoApiDocBundle** uses introspection a lot. Thanks to an annotation, it's
 really easy to document an API method.
 
 ### The ApiDoc() Annotation
@@ -68,7 +68,7 @@ The bundle provides an `ApiDoc()` annotation for your controllers:
 
 namespace Your\Namespace;
 
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
 
 class YourController extends Controller
 {
@@ -367,8 +367,8 @@ configure a list of parsers that will be used:
 output={
     "class"   = "Acme\Bundle\Entity\User",
     "parsers" = {
-        "Nelmio\ApiDocBundle\Parser\JmsMetadataParser",
-        "Nelmio\ApiDocBundle\Parser\ValidationParser"
+        "Nayzo\ApiDocBundle\Parser\JmsMetadataParser",
+        "Nayzo\ApiDocBundle\Parser\ValidationParser"
     }
 }
 ```
@@ -382,9 +382,9 @@ This feature also works for both the `input` and `output` properties.
 
 You can browse the whole documentation at: `http://example.org/api/doc`.
 
-![](https://github.com/nelmio/NelmioApiDocBundle/raw/master/Resources/doc/webview.png)
+![](https://github.com/nayzo/NayzoApiDocBundle/raw/master/Resources/doc/webview.png)
 
-![](https://github.com/nelmio/NelmioApiDocBundle/raw/master/Resources/doc/webview2.png)
+![](https://github.com/nayzo/NayzoApiDocBundle/raw/master/Resources/doc/webview2.png)
 
 ### On-The-Fly Documentation
 
@@ -398,7 +398,7 @@ configure this sandbox using the following parameters:
 
 ```yaml
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     sandbox:
         authentication:             # default is `~` (`null`), if set, the sandbox automatically
                                     # send authenticated requests using the configured `delivery`
@@ -461,18 +461,18 @@ If you want to generate a static version of your documentation without sandbox, 
 
 ### Swagger support
 
-Read the [documentation for Swagger integration](https://github.com/nelmio/NelmioApiDocBundle/blob/master/Resources/doc/swagger-support.md)
+Read the [documentation for Swagger integration](https://github.com/nayzo/NayzoApiDocBundle/blob/master/Resources/doc/swagger-support.md)
 for the necessary steps to make a Swagger-compliant documentation for your API.
 
 ### DunglasApiBundle support
 
 This bundle recognizes and documents resources exposed with [DunglasApiBundle](https://github.com/dunglas/DunglasApiBundle).
-Just install NelmioApiDoc and the documentation will be automatically available. To enable the sandbox, use the following
+Just install NayzoApiDoc and the documentation will be automatically available. To enable the sandbox, use the following
 configuration:
 
 ```yaml
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     sandbox:
         accept_type:        "application/json"
         body_format:
@@ -489,7 +489,7 @@ It is a good idea to enable the internal caching mechanism on production:
 
 ```yaml
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     cache:
         enabled: true
 ```
@@ -501,28 +501,28 @@ You can specify your own API name:
 
 ```yaml
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     name: My API
 ```
 You can choose between different authentication methods:
 
 ```yaml
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     sandbox:
         authentication:
             delivery: header
             name:     X-Custom
 
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     sandbox:
         authentication:
             delivery: query
             name:     param
 
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     sandbox:
         authentication:
             delivery: http
@@ -535,7 +535,7 @@ You can specify which sections to exclude from the documentation generation:
 
 ```yaml
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     exclude_sections: ["privateapi", "testapi"]
 ```
 
@@ -555,14 +555,14 @@ services:
     mybundle.api_doc.extractor.custom_parser:
         class: MyBundle\Parser\CustomDocParser
         tags:
-            - { name: nelmio_api_doc.extractor.parser, priority: 2 }
+            - { name: nayzo_api_doc.extractor.parser, priority: 2 }
 ```
 You can also define your own motd content (above methods list). All you have to
 do is add to configuration:
 
 ```yaml
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     # ...
     motd:
         template: AcmeApiBundle::Components/motd.html.twig
@@ -572,7 +572,7 @@ You can define an alternate location where the ApiDoc configurations are to be c
 
 ```yaml
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     cache:
         enabled: true
         file: "/tmp/symfony-app/%kernel.environment%/api-doc.cache"
@@ -582,7 +582,7 @@ nelmio_api_doc:
 
 If you have developed your own project-related annotations, and you want to parse them to populate
 the `ApiDoc`, you can provide custom handlers as services. You just have to implement the
-`Nelmio\ApiDocBundle\Extractor\HandlerInterface` and tag it as `nelmio_api_doc.extractor.handler`:
+`Nayzo\ApiDocBundle\Extractor\HandlerInterface` and tag it as `nayzo_api_doc.extractor.handler`:
 
 ```yaml
 # app/config/config.yml
@@ -590,10 +590,10 @@ services:
     mybundle.api_doc.extractor.my_annotation_handler:
         class: MyBundle\AnnotationHandler\MyAnnotationHandler
         tags:
-            - { name: nelmio_api_doc.extractor.handler }
+            - { name: nayzo_api_doc.extractor.handler }
 ```
 
-Look at the built-in [Handlers](https://github.com/nelmio/NelmioApiDocBundle/tree/master/Extractor/Handler).
+Look at the built-in [Handlers](https://github.com/nayzo/NayzoApiDocBundle/tree/master/Extractor/Handler).
 
 ### Using Your Own Json File Parameters
 
@@ -623,19 +623,19 @@ And configure the path to the file in your config.yml
 
 ```yaml
 # app/config/config.yml
-nelmio_api_doc:
+nayzo_api_doc:
     schema_path: '%kernel.root_dir%/../src/MyBundle/JsonFiles/'
 ```
 
 ### Configuration Reference
 
 ``` yaml
-nelmio_api_doc:
+nayzo_api_doc:
     name:                 'API documentation'
     exclude_sections:     []
     default_sections_opened:  true
     motd:
-        template:             'NelmioApiDocBundle::Components/motd.html.twig'
+        template:             'NayzoApiDocBundle::Components/motd.html.twig'
     request_listener:
         enabled:              true
         parameter:            _doc

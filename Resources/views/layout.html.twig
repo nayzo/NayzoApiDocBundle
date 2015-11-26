@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="header">
-    <a href="{{ path('nelmio_api_doc_index') }}"><h1>{{ apiName }}</h1></a>
+    <a href="{{ path('nayzo_api_doc_index') }}"><h1>{{ apiName }}</h1></a>
     {% if enableSandbox %}
         <div id="sandbox_configuration">
             {% if bodyFormats|length > 0 %}
@@ -158,7 +158,7 @@
 
     if ('localStorage' in window) {
         var buildKey = function (key) {
-            return 'nelmio_' + key;
+            return 'nayzo_' + key;
         }
 
         getStoredValue = function (key) {

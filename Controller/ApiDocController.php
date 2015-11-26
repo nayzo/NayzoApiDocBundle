@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Controller;
+namespace Nayzo\ApiDocBundle\Controller;
 
-use Nelmio\ApiDocBundle\Formatter\RequestAwareSwaggerFormatter;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Nayzo\ApiDocBundle\Formatter\RequestAwareSwaggerFormatter;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,8 +22,8 @@ class ApiDocController extends Controller
 {
     public function indexAction($view = ApiDoc::DEFAULT_VIEW)
     {
-        $extractedDoc = $this->get('nelmio_api_doc.extractor.api_doc_extractor')->all($view);
-        $htmlContent  = $this->get('nelmio_api_doc.formatter.html_formatter')->format($extractedDoc);
+        $extractedDoc = $this->get('nayzo_api_doc.extractor.api_doc_extractor')->all($view);
+        $htmlContent  = $this->get('nayzo_api_doc.formatter.html_formatter')->format($extractedDoc);
 
         return new Response($htmlContent, 200, array('Content-Type' => 'text/html'));
     }
@@ -31,8 +31,8 @@ class ApiDocController extends Controller
     public function swaggerAction(Request $request, $resource = null)
     {
 
-        $docs = $this->get('nelmio_api_doc.extractor.api_doc_extractor')->all();
-        $formatter = new RequestAwareSwaggerFormatter($request, $this->get('nelmio_api_doc.formatter.swagger_formatter'));
+        $docs = $this->get('nayzo_api_doc.extractor.api_doc_extractor')->all();
+        $formatter = new RequestAwareSwaggerFormatter($request, $this->get('nayzo_api_doc.formatter.swagger_formatter'));
 
         $spec = $formatter->format($docs, $resource ? '/' . $resource : null);
 

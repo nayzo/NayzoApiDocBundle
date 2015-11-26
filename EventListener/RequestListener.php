@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\EventListener;
+namespace Nayzo\ApiDocBundle\EventListener;
 
-use Nelmio\ApiDocBundle\Extractor\ApiDocExtractor;
-use Nelmio\ApiDocBundle\Formatter\FormatterInterface;
+use Nayzo\ApiDocBundle\Extractor\ApiDocExtractor;
+use Nayzo\ApiDocBundle\Formatter\FormatterInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -20,12 +20,12 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 class RequestListener
 {
     /**
-     * @var \Nelmio\ApiDocBundle\Extractor\ApiDocExtractor
+     * @var \Nayzo\ApiDocBundle\Extractor\ApiDocExtractor
      */
     protected $extractor;
 
     /**
-     * @var \Nelmio\ApiDocBundle\Formatter\FormatterInterface
+     * @var \Nayzo\ApiDocBundle\Formatter\FormatterInterface
      */
     protected $formatter;
 

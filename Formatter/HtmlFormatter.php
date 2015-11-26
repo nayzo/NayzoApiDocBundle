@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Formatter;
+namespace Nayzo\ApiDocBundle\Formatter;
 
 use Symfony\Component\Templating\EngineInterface;
 
@@ -197,7 +197,7 @@ class HtmlFormatter extends AbstractFormatter
      */
     protected function renderOne(array $data)
     {
-        return $this->engine->render('NelmioApiDocBundle::resource.html.twig', array_merge(
+        return $this->engine->render('NayzoApiDocBundle::resource.html.twig', array_merge(
             array(
                 'data'           => $data,
                 'displayContent' => true,
@@ -211,7 +211,7 @@ class HtmlFormatter extends AbstractFormatter
      */
     protected function render(array $collection)
     {
-        return $this->engine->render('NelmioApiDocBundle::resources.html.twig', array_merge(
+        return $this->engine->render('NayzoApiDocBundle::resources.html.twig', array_merge(
             array(
                 'resources' => $collection,
             ),

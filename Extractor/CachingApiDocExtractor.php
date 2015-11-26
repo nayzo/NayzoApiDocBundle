@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Extractor;
+namespace Nayzo\ApiDocBundle\Extractor;
 
 use Doctrine\Common\Annotations\Reader;
-use Nelmio\ApiDocBundle\Util\DocCommentExtractor;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Nayzo\ApiDocBundle\Util\DocCommentExtractor;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser;
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\Config\Resource\FileResource;

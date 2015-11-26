@@ -1,8 +1,8 @@
 <?php
 
-namespace NelmioApiDocBundle\Tests\Command;
+namespace NayzoApiDocBundle\Tests\Command;
 
-use Nelmio\ApiDocBundle\Tests\WebTestCase;
+use Nayzo\ApiDocBundle\Tests\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Tester\ApplicationTester;
 use Symfony\Component\PropertyAccess\PropertyAccess;

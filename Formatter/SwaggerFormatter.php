@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Formatter;
+namespace Nayzo\ApiDocBundle\Formatter;
 
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Nelmio\ApiDocBundle\DataTypes;
-use Nelmio\ApiDocBundle\Swagger\ModelRegistry;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
+use Nayzo\ApiDocBundle\DataTypes;
+use Nayzo\ApiDocBundle\Swagger\ModelRegistry;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -53,7 +53,7 @@ class SwaggerFormatter implements FormatterInterface
     );
 
     /**
-     * @var \Nelmio\ApiDocBundle\Swagger\ModelRegistry
+     * @var \Nayzo\ApiDocBundle\Swagger\ModelRegistry
      */
     protected $modelRegistry;
 

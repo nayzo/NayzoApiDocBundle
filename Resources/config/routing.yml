@@ -1,4 +1,4 @@
-nelmio_api_doc_index:
+nayzo_api_doc_index:
     path: /{view}
-    defaults: { _controller: NelmioApiDocBundle:ApiDoc:index, view: 'default' }
+    defaults: { _controller: NayzoApiDocBundle:ApiDoc:index, view: 'default' }
     methods:  [GET]

@@ -1,9 +1,9 @@
 <?php
-namespace NelmioApiDocBundle\Tests\Parser;
+namespace NayzoApiDocBundle\Tests\Parser;
 
-use Nelmio\ApiDocBundle\DataTypes;
-use Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested;
-use Nelmio\ApiDocBundle\Parser\JmsMetadataParser;
+use Nayzo\ApiDocBundle\DataTypes;
+use Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested;
+use Nayzo\ApiDocBundle\Parser\JmsMetadataParser;
 use JMS\Serializer\Metadata\ClassMetadata;
 use JMS\Serializer\Metadata\PropertyMetadata;
 use JMS\Serializer\Naming\CamelCaseNamingStrategy;
@@ -16,21 +16,21 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
     public function testParserWithNestedType($type)
     {
         $metadataFactory = $this->getMock('Metadata\MetadataFactoryInterface');
-        $docCommentExtractor = $this->getMockBuilder('Nelmio\ApiDocBundle\Util\DocCommentExtractor')
+        $docCommentExtractor = $this->getMockBuilder('Nayzo\ApiDocBundle\Util\DocCommentExtractor')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $propertyMetadataFoo = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'foo');
+        $propertyMetadataFoo = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'foo');
         $propertyMetadataFoo->type = array(
             'name' => 'DateTime'
         );
 
-        $propertyMetadataBar = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'bar');
+        $propertyMetadataBar = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'bar');
         $propertyMetadataBar->type = array(
             'name' => 'string'
         );
 
-        $propertyMetadataBaz = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'baz');
+        $propertyMetadataBaz = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'baz');
         $propertyMetadataBaz->type = array(
             'name' => $type,
             'params' =>  array(
@@ -41,7 +41,7 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
             )
         );
 
-        $metadata = new ClassMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested');
+        $metadata = new ClassMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested');
         $metadata->addPropertyMetadata($propertyMetadataFoo);
         $metadata->addPropertyMetadata($propertyMetadataBar);
         $metadata->addPropertyMetadata($propertyMetadataBaz);
@@ -63,7 +63,7 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
             ->method('translateName')
             ->will($this->returnValue('baz'));
 
-        $input = 'Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested';
+        $input = 'Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested';
 
         $metadataFactory->expects($this->once())
             ->method('getMetadataForClass')
@@ -122,22 +122,22 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
     public function testParserWithGroups()
     {
         $metadataFactory     = $this->getMock('Metadata\MetadataFactoryInterface');
-        $docCommentExtractor = $this->getMockBuilder('Nelmio\ApiDocBundle\Util\DocCommentExtractor')
+        $docCommentExtractor = $this->getMockBuilder('Nayzo\ApiDocBundle\Util\DocCommentExtractor')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $propertyMetadataFoo       = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'foo');
+        $propertyMetadataFoo       = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'foo');
         $propertyMetadataFoo->type = array('name' => 'string');
 
-        $propertyMetadataBar         = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'bar');
+        $propertyMetadataBar         = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'bar');
         $propertyMetadataBar->type   = array('name' => 'string');
         $propertyMetadataBar->groups = array('Default', 'Special');
 
-        $propertyMetadataBaz         = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'baz');
+        $propertyMetadataBaz         = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'baz');
         $propertyMetadataBaz->type   = array('name' => 'string');
         $propertyMetadataBaz->groups = array('Special');
 
-        $input = 'Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested';
+        $input = 'Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested';
 
         $metadata = new ClassMetadata($input);
         $metadata->addPropertyMetadata($propertyMetadataFoo);
@@ -323,12 +323,12 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
     public function testNestedGroups()
     {
         $metadataFactory     = $this->getMock('Metadata\MetadataFactoryInterface');
-        $docCommentExtractor = $this->getMockBuilder('Nelmio\ApiDocBundle\Util\DocCommentExtractor')
+        $docCommentExtractor = $this->getMockBuilder('Nayzo\ApiDocBundle\Util\DocCommentExtractor')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $input = 'Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested';
-        $nestedInput = 'Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsTest';
+        $input = 'Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested';
+        $nestedInput = 'Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsTest';
 
         $nestedPropertyMetadataHidden = new PropertyMetadata($nestedInput, 'hidden');
         $nestedPropertyMetadataHidden->type = array('name' => 'string');
@@ -410,22 +410,22 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
     public function testParserWithVersion()
     {
         $metadataFactory     = $this->getMock('Metadata\MetadataFactoryInterface');
-        $docCommentExtractor = $this->getMockBuilder('Nelmio\ApiDocBundle\Util\DocCommentExtractor')
+        $docCommentExtractor = $this->getMockBuilder('Nayzo\ApiDocBundle\Util\DocCommentExtractor')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $propertyMetadataFoo       = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'foo');
+        $propertyMetadataFoo       = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'foo');
         $propertyMetadataFoo->type = array('name' => 'string');
 
-        $propertyMetadataBar               = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'bar');
+        $propertyMetadataBar               = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'bar');
         $propertyMetadataBar->type         = array('name' => 'string');
         $propertyMetadataBar->sinceVersion = '2.0';
 
-        $propertyMetadataBaz               = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'baz');
+        $propertyMetadataBaz               = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested', 'baz');
         $propertyMetadataBaz->type         = array('name' => 'string');
         $propertyMetadataBaz->untilVersion = '3.0';
 
-        $input = 'Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested';
+        $input = 'Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested';
 
         $metadata = new ClassMetadata($input);
         $metadata->addPropertyMetadata($propertyMetadataFoo);
@@ -492,27 +492,27 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
     public function testParserWithInline()
     {
         $metadataFactory     = $this->getMock('Metadata\MetadataFactoryInterface');
-        $docCommentExtractor = $this->getMockBuilder('Nelmio\ApiDocBundle\Util\DocCommentExtractor')
+        $docCommentExtractor = $this->getMockBuilder('Nayzo\ApiDocBundle\Util\DocCommentExtractor')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $propertyMetadataFoo = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsInline', 'foo');
+        $propertyMetadataFoo = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsInline', 'foo');
         $propertyMetadataFoo->type = array('name' => 'string');
 
-        $propertyMetadataInline = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsInline', 'inline');
-        $propertyMetadataInline->type = array('name' => 'Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsTest');
+        $propertyMetadataInline = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsInline', 'inline');
+        $propertyMetadataInline->type = array('name' => 'Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsTest');
         $propertyMetadataInline->inline = true;
 
-        $input = 'Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsInline';
+        $input = 'Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsInline';
 
         $metadata = new ClassMetadata($input);
         $metadata->addPropertyMetadata($propertyMetadataFoo);
         $metadata->addPropertyMetadata($propertyMetadataInline);
 
-        $propertyMetadataBar = new PropertyMetadata('Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsTest', 'bar');
+        $propertyMetadataBar = new PropertyMetadata('Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsTest', 'bar');
         $propertyMetadataBar->type = array('name' => 'string');
 
-        $subInput = 'Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsTest';
+        $subInput = 'Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsTest';
 
         $subMetadata = new ClassMetadata($subInput);
         $subMetadata->addPropertyMetadata($propertyMetadataBar);

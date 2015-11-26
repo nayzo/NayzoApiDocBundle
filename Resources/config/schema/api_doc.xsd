@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsd:schema xmlns="http://nelmio.github.io/schema/dic/nelmio_api_doc"
+<xsd:schema xmlns="http://nayzo.github.io/schema/dic/nayzo_api_doc"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://nelmio.github.io/schema/dic/nelmio_api_doc"
+    targetNamespace="http://nayzo.github.io/schema/dic/nayzo_api_doc"
     elementFormDefault="qualified">
 
     <xsd:element name="config">

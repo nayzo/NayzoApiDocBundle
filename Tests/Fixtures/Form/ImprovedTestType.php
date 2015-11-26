@@ -1,6 +1,6 @@
 <?php
 
-namespace Nelmio\ApiDocBundle\Tests\Fixtures\Form;
+namespace Nayzo\ApiDocBundle\Tests\Fixtures\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
@@ -47,7 +47,7 @@ class ImprovedTestType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Nelmio\ApiDocBundle\Tests\Fixtures\Model\ImprovedTest',
+            'data_class' => 'Nayzo\ApiDocBundle\Tests\Fixtures\Model\ImprovedTest',
         ));
 
         return;

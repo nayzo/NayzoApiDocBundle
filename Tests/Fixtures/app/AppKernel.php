@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Tests\Functional;
+namespace Nayzo\ApiDocBundle\Tests\Functional;
 
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
@@ -30,8 +30,8 @@ class AppKernel extends Kernel
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Symfony\Bundle\TwigBundle\TwigBundle(),
             new \JMS\SerializerBundle\JMSSerializerBundle($this),
-            new \Nelmio\ApiDocBundle\NelmioApiDocBundle(),
-            new \Nelmio\ApiDocBundle\Tests\Fixtures\NelmioApiDocTestBundle(),
+            new \Nayzo\ApiDocBundle\NayzoApiDocBundle(),
+            new \Nayzo\ApiDocBundle\Tests\Fixtures\NayzoApiDocTestBundle(),
         );
 
         if (class_exists('Dunglas\ApiBundle\DunglasApiBundle')) {
@@ -49,12 +49,12 @@ class AppKernel extends Kernel
 
     public function getCacheDir()
     {
-        return sys_get_temp_dir().'/'.Kernel::VERSION.'/nelmio-api-doc/cache/'.$this->environment;
+        return sys_get_temp_dir().'/'.Kernel::VERSION.'/nayzo-api-doc/cache/'.$this->environment;
     }
 
     public function getLogDir()
     {
-        return sys_get_temp_dir().'/'.Kernel::VERSION.'/nelmio-api-doc/logs';
+        return sys_get_temp_dir().'/'.Kernel::VERSION.'/nayzo-api-doc/logs';
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)

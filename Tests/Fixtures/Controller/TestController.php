@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Tests\Fixtures\Controller;
+namespace Nayzo\ApiDocBundle\Tests\Fixtures\Controller;
 
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RequestParam;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\Email;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
@@ -50,7 +50,7 @@ class TestController
      * @ApiDoc(
      *  description="create test",
      *  views={ "default", "premium" },
-     *  input="Nelmio\ApiDocBundle\Tests\Fixtures\Form\TestType"
+     *  input="Nayzo\ApiDocBundle\Tests\Fixtures\Form\TestType"
      * )
      */
     public function postTestAction()
@@ -70,7 +70,7 @@ class TestController
 
     /**
      * @ApiDoc(
-     *  input="Nelmio\ApiDocBundle\Tests\Fixtures\Form\RequiredType"
+     *  input="Nayzo\ApiDocBundle\Tests\Fixtures\Form\RequiredType"
      * )
      */
     public function requiredParametersAction()
@@ -156,7 +156,7 @@ class TestController
     /**
      * @ApiDoc(
      *  description="Testing JMS",
-     *  input="Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsTest"
+     *  input="Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsTest"
      * )
      */
     public function jmsInputTestAction()
@@ -240,7 +240,7 @@ class TestController
 
     /**
      * @ApiDoc(
-     *     output="Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsTest"
+     *     output="Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsTest"
      * )
      */
     public function jmsReturnNestedOutputAction()
@@ -249,7 +249,7 @@ class TestController
 
     /**
      * @ApiDoc(
-     *     output="Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsChild"
+     *     output="Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsChild"
      * )
      */
     public function jmsReturnNestedExtendedOutputAction()
@@ -258,7 +258,7 @@ class TestController
 
     /**
      * @ApiDoc(
-     *     output="Nelmio\ApiDocBundle\Tests\Fixtures\Model\MultipleTest"
+     *     output="Nayzo\ApiDocBundle\Tests\Fixtures\Model\MultipleTest"
      * )
      */
     public function zReturnJmsAndValidationOutputAction()
@@ -283,9 +283,9 @@ class TestController
     /**
      * @ApiDoc(
      *     input={
-     *          "class"="Nelmio\ApiDocBundle\Tests\Fixtures\Form\TestType",
+     *          "class"="Nayzo\ApiDocBundle\Tests\Fixtures\Form\TestType",
      *          "parsers"={
-     *              "Nelmio\ApiDocBundle\Parser\FormTypeParser",
+     *              "Nayzo\ApiDocBundle\Parser\FormTypeParser",
      *          }
      *     }
      * )
@@ -297,10 +297,10 @@ class TestController
     /**
      * @ApiDoc(
      *     output={
-     *          "class"="Nelmio\ApiDocBundle\Tests\Fixtures\Model\MultipleTest",
+     *          "class"="Nayzo\ApiDocBundle\Tests\Fixtures\Model\MultipleTest",
      *          "parsers"={
-     *              "Nelmio\ApiDocBundle\Parser\JmsMetadataParser",
-     *              "Nelmio\ApiDocBundle\Parser\ValidationParser"
+     *              "Nayzo\ApiDocBundle\Parser\JmsMetadataParser",
+     *              "Nayzo\ApiDocBundle\Parser\ValidationParser"
      *          }
      *     }
      * )

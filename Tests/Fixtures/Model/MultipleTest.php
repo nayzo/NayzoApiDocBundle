@@ -1,6 +1,6 @@
 <?php
 
-namespace Nelmio\ApiDocBundle\Tests\Fixtures\Model;
+namespace Nayzo\ApiDocBundle\Tests\Fixtures\Model;
 
 use JMS\Serializer\Annotation as JMS;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -21,7 +21,7 @@ class MultipleTest
     public $baz;
 
     /**
-     * @JMS\Type("Nelmio\ApiDocBundle\Tests\Fixtures\Model\Test")
+     * @JMS\Type("Nayzo\ApiDocBundle\Tests\Fixtures\Model\Test")
      */
     public $related;
 

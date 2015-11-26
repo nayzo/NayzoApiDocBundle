@@ -1,5 +1,5 @@
 <?php
-namespace Nelmio\ApiDocBundle\Tests\Fixtures\Model;
+namespace Nayzo\ApiDocBundle\Tests\Fixtures\Model;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -27,12 +27,12 @@ class JmsNested
     public $baz;
 
     /**
-     * @JMS\Type("Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested");
+     * @JMS\Type("Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested");
      */
     public $circular;
 
     /**
-     * @JMS\Type("Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsTest");
+     * @JMS\Type("Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsTest");
      */
     public $parent;
 

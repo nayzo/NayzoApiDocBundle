@@ -1,16 +1,16 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Tests\Fixtures\Controller;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+namespace Nayzo\ApiDocBundle\Tests\Fixtures\Controller;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
 
 class ResourceController
 {
@@ -20,7 +20,7 @@ class ResourceController
      *      views={ "test", "premium", "default" },
      *      resourceDescription="Operations on resource.",
      *      description="List resources.",
-     *      output="array<Nelmio\ApiDocBundle\Tests\Fixtures\Model\Test> as tests",
+     *      output="array<Nayzo\ApiDocBundle\Tests\Fixtures\Model\Test> as tests",
      *      statusCodes={200 = "Returned on success.", 404 = "Returned if resource cannot be found."}
      * )
      */
@@ -49,10 +49,10 @@ class ResourceController
      * @ApiDoc(
      *      description="Create a new resource.",
      *      views={ "default", "premium" },
-     *      input={"class" = "Nelmio\ApiDocBundle\Tests\Fixtures\Form\SimpleType", "name" = ""},
-     *      output="Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested",
+     *      input={"class" = "Nayzo\ApiDocBundle\Tests\Fixtures\Form\SimpleType", "name" = ""},
+     *      output="Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested",
      *      responseMap={
-     *          400 = {"class" = "Nelmio\ApiDocBundle\Tests\Fixtures\Form\SimpleType", "form_errors" = true}
+     *          400 = {"class" = "Nayzo\ApiDocBundle\Tests\Fixtures\Form\SimpleType", "form_errors" = true}
      *      }
      * )
      */
@@ -67,7 +67,7 @@ class ResourceController
      *      views={ "default", "premium" },
      *      description="List another resource.",
      *      resourceDescription="Operations on another resource.",
-     *      output="array<Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsTest>"
+     *      output="array<Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsTest>"
      * )
      */
     public function listAnotherResourcesAction()

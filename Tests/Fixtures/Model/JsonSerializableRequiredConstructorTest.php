@@ -3,7 +3,7 @@
  * Created by mcfedr on 30/06/15 21:05
  */
 
-namespace Nelmio\ApiDocBundle\Tests\Fixtures\Model;
+namespace Nayzo\ApiDocBundle\Tests\Fixtures\Model;
 
 class JsonSerializableRequiredConstructorTest implements \JsonSerializable
 {

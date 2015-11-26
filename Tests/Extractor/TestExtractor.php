@@ -1,8 +1,8 @@
 <?php
 
-namespace Nelmio\ApiDocBundle\Tests\Extractor;
+namespace Nayzo\ApiDocBundle\Tests\Extractor;
 
-use Nelmio\ApiDocBundle\Extractor\ApiDocExtractor;
+use Nayzo\ApiDocBundle\Extractor\ApiDocExtractor;
 
 class TestExtractor extends ApiDocExtractor
 {

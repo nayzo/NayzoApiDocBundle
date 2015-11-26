@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Extractor\AnnotationsProvider;
+namespace Nayzo\ApiDocBundle\Extractor\AnnotationsProvider;
 
 use Dunglas\ApiBundle\Api\Operation\OperationInterface;
 use Dunglas\ApiBundle\Api\ResourceCollectionInterface;
 use Dunglas\ApiBundle\Api\ResourceInterface;
 use Dunglas\ApiBundle\Hydra\ApiDocumentationBuilderInterface;
 use Dunglas\ApiBundle\Mapping\ClassMetadataFactoryInterface;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Nelmio\ApiDocBundle\Extractor\AnnotationsProviderInterface;
-use Nelmio\ApiDocBundle\Parser\DunglasApiParser;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
+use Nayzo\ApiDocBundle\Extractor\AnnotationsProviderInterface;
+use Nayzo\ApiDocBundle\Parser\DunglasApiParser;
 use Symfony\Component\HttpFoundation\Request;
 
 /**

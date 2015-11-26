@@ -1,10 +1,10 @@
 <?php
-namespace NelmioApiDocBundle\Tests\Parser;
+namespace NayzoApiDocBundle\Tests\Parser;
 
-use Nelmio\ApiDocBundle\DataTypes;
-use Nelmio\ApiDocBundle\Tests\WebTestCase;
-use Nelmio\ApiDocBundle\Parser\ValidationParser;
-use Nelmio\ApiDocBundle\Parser\ValidationParserLegacy;
+use Nayzo\ApiDocBundle\DataTypes;
+use Nayzo\ApiDocBundle\Tests\WebTestCase;
+use Nayzo\ApiDocBundle\Parser\ValidationParser;
+use Nayzo\ApiDocBundle\Parser\ValidationParserLegacy;
 use Symfony\Component\HttpKernel\Kernel;
 
 class ValidationParserTest extends WebTestCase
@@ -33,7 +33,7 @@ class ValidationParserTest extends WebTestCase
      */
     public function testParser($property, $expected)
     {
-        $result = $this->parser->parse(array('class' => 'Nelmio\ApiDocBundle\Tests\Fixtures\Model\ValidatorTest'));
+        $result = $this->parser->parse(array('class' => 'Nayzo\ApiDocBundle\Tests\Fixtures\Model\ValidatorTest'));
         foreach ($expected as $name => $value) {
             $this->assertArrayHasKey($property, $result);
             $this->assertArrayHasKey($name, $result[$property]);

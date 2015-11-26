@@ -1,16 +1,16 @@
 <?php
 /*
-* This file is part of the NelmioApiDocBundle.
+* This file is part of the NayzoApiDocBundle.
 *
-* (c) Nelmio <hello@nelm.io>
+* (c) Nayzo <alakhefifi@gmail.com>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
 
-namespace Nelmio\ApiDocBundle\Tests\Extractor;
+namespace Nayzo\ApiDocBundle\Tests\Extractor;
 
-use Nelmio\ApiDocBundle\Tests\WebTestCase;
+use Nayzo\ApiDocBundle\Tests\WebTestCase;
 
 class FosRestHandlerTest extends WebTestCase
 {
@@ -18,8 +18,8 @@ class FosRestHandlerTest extends WebTestCase
     public function testGetWithQueryParamStrict()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithQueryParamStrictAction', 'test_route_15');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithQueryParamStrictAction', 'test_route_15');
 
         $this->assertNotNull($annotation);
 
@@ -43,8 +43,8 @@ class FosRestHandlerTest extends WebTestCase
     public function testGetWithQueryParam()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithQueryParamAction', 'test_route_8');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithQueryParamAction', 'test_route_8');
 
         $this->assertNotNull($annotation);
 
@@ -67,8 +67,8 @@ class FosRestHandlerTest extends WebTestCase
     public function testGetWithQueryParamNoDefault()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithQueryParamNoDefaultAction', 'test_route_16');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithQueryParamNoDefaultAction', 'test_route_16');
 
         $this->assertNotNull($annotation);
 
@@ -90,8 +90,8 @@ class FosRestHandlerTest extends WebTestCase
     public function testGetWithConstraintAsRequirements()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithConstraintAsRequirements', 'test_route_21');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithConstraintAsRequirements', 'test_route_21');
 
         $this->assertNotNull($annotation);
 
@@ -108,8 +108,8 @@ class FosRestHandlerTest extends WebTestCase
     public function testGetWithRequestParam()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithRequestParamAction', 'test_route_11');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithRequestParamAction', 'test_route_11');
 
         $this->assertNotNull($annotation);
 
@@ -134,8 +134,8 @@ class FosRestHandlerTest extends WebTestCase
     public function testGetWithRequestParamNullable()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithNullableRequestParamAction', 'test_route_22');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithNullableRequestParamAction', 'test_route_22');
 
         $this->assertNotNull($annotation);
 
@@ -160,8 +160,8 @@ class FosRestHandlerTest extends WebTestCase
     public function testPostWithArrayRequestParam()
     {
         $container  = $this->getContainer();
-        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithArrayRequestParamAction', 'test_route_26');
+        $extractor  = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $annotation = $extractor->get('Nayzo\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionWithArrayRequestParamAction', 'test_route_26');
 
         $this->assertNotNull($annotation);
 

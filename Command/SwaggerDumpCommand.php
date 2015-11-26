@@ -1,17 +1,17 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Command;
+namespace Nayzo\ApiDocBundle\Command;
 
-use Nelmio\ApiDocBundle\Formatter\SwaggerFormatter;
+use Nayzo\ApiDocBundle\Formatter\SwaggerFormatter;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -54,8 +54,8 @@ class SwaggerDumpCommand extends ContainerAwareCommand
     {
         $container = $this->getContainer();
 
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $this->formatter = $container->get('nelmio_api_doc.formatter.swagger_formatter');
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $this->formatter = $container->get('nayzo_api_doc.formatter.swagger_formatter');
 
         if ($input->getOption('list-only') && $input->getOption('resource')) {
             throw new \RuntimeException('Cannot selectively dump a resource with the --list-only flag.');

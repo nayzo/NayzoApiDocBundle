@@ -1,10 +1,10 @@
 <?php
 
-namespace Nelmio\ApiDocBundle\Tests\Extractor;
+namespace Nayzo\ApiDocBundle\Tests\Extractor;
 
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Nelmio\ApiDocBundle\Extractor\CachingApiDocExtractor;
-use Nelmio\ApiDocBundle\Tests\WebTestCase;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
+use Nayzo\ApiDocBundle\Extractor\CachingApiDocExtractor;
+use Nayzo\ApiDocBundle\Tests\WebTestCase;
 
 class CachingApiDocExtractorTest extends WebTestCase
 {
@@ -29,8 +29,8 @@ class CachingApiDocExtractorTest extends WebTestCase
     {
         $container = $this->getContainer();
         /* @var CachingApiDocExtractor $extractor */
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $this->assertInstanceOf('\Nelmio\ApiDocBundle\Extractor\CachingApiDocExtractor', $extractor);
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $this->assertInstanceOf('\Nayzo\ApiDocBundle\Extractor\CachingApiDocExtractor', $extractor);
 
         set_error_handler(array($this, 'handleDeprecation'));
         $defaultData = $extractor->all(ApiDoc::DEFAULT_VIEW);
@@ -52,15 +52,15 @@ class CachingApiDocExtractorTest extends WebTestCase
     }
 
     /**
-     * @dataProvider \Nelmio\ApiDocBundle\Tests\Extractor\ApiDocExtractorTest::dataProviderForViews
+     * @dataProvider \Nayzo\ApiDocBundle\Tests\Extractor\ApiDocExtractorTest::dataProviderForViews
      * @param string $view View name to test
      */
     public function testCachedResultSameAsGenerated($view)
     {
         $container = $this->getContainer();
         /* @var CachingApiDocExtractor $extractor */
-        $extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $this->assertInstanceOf('\Nelmio\ApiDocBundle\Extractor\CachingApiDocExtractor', $extractor);
+        $extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $this->assertInstanceOf('\Nayzo\ApiDocBundle\Extractor\CachingApiDocExtractor', $extractor);
 
         $cacheFile = $container->getParameter('kernel.cache_dir').'/api-doc.cache';
 

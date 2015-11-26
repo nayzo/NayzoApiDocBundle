@@ -1,6 +1,6 @@
 <?php
 
-namespace Nelmio\ApiDocBundle\Tests\Fixtures\Model;
+namespace Nayzo\ApiDocBundle\Tests\Fixtures\Model;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -31,12 +31,12 @@ class JmsTest
     public $arr;
 
     /**
-     * @JMS\Type("Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested");
+     * @JMS\Type("Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested");
      */
     public $nested;
 
     /**
-     * @JMS\Type("array<Nelmio\ApiDocBundle\Tests\Fixtures\Model\JmsNested>");
+     * @JMS\Type("array<Nayzo\ApiDocBundle\Tests\Fixtures\Model\JmsNested>");
      */
     public $nestedArray;
 

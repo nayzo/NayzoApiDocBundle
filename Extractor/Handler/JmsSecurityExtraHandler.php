@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Nelmio\ApiDocBundle\Extractor\Handler;
+namespace Nayzo\ApiDocBundle\Extractor\Handler;
 
 use JMS\SecurityExtraBundle\Annotation\PreAuthorize;
-use Nelmio\ApiDocBundle\Extractor\HandlerInterface;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Nayzo\ApiDocBundle\Extractor\HandlerInterface;
+use Nayzo\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\Routing\Route;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 

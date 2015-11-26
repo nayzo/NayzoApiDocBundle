@@ -1,15 +1,15 @@
 <?php
 
-namespace Nelmio\ApiDocBundle\Tests\Formatter;
+namespace Nayzo\ApiDocBundle\Tests\Formatter;
 
-use Nelmio\ApiDocBundle\Extractor\ApiDocExtractor;
-use Nelmio\ApiDocBundle\Formatter\SwaggerFormatter;
-use Nelmio\ApiDocBundle\Tests\WebTestCase;
+use Nayzo\ApiDocBundle\Extractor\ApiDocExtractor;
+use Nayzo\ApiDocBundle\Formatter\SwaggerFormatter;
+use Nayzo\ApiDocBundle\Tests\WebTestCase;
 
 /**
  * Class SwaggerFormatterTest
  *
- * @package Nelmio\ApiDocBundle\Tests\Formatter
+ * @package Nayzo\ApiDocBundle\Tests\Formatter
  * @author  Bez Hermoso <bez@activelamp.com>
  */
 class SwaggerFormatterTest extends WebTestCase
@@ -30,8 +30,8 @@ class SwaggerFormatterTest extends WebTestCase
         parent::setUp();
 
         $container       = $this->getContainer();
-        $this->extractor = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
-        $this->formatter = $container->get('nelmio_api_doc.formatter.swagger_formatter');
+        $this->extractor = $container->get('nayzo_api_doc.extractor.api_doc_extractor');
+        $this->formatter = $container->get('nayzo_api_doc.formatter.swagger_formatter');
     }
 
     public function testResourceListing()
@@ -109,7 +109,7 @@ class SwaggerFormatterTest extends WebTestCase
                 'apiVersion' => '3.14',
                 'info' =>
                     array (
-                        'title' => 'Nelmio Swagger',
+                        'title' => 'Nayzo Swagger',
                         'description' => 'Testing Swagger integration.',
                         'TermsOfServiceUrl' => 'https://github.com',
                         'contact' => 'user@domain.tld',
@@ -132,7 +132,7 @@ class SwaggerFormatterTest extends WebTestCase
                 'apiVersion' => '3.14',
                 'info' =>
                     array(
-                        'title' => 'Nelmio Swagger',
+                        'title' => 'Nayzo Swagger',
                         'description' => 'Testing Swagger integration.',
                         'TermsOfServiceUrl' => 'https://github.com',
                         'contact' => 'user@domain.tld',
@@ -240,14 +240,14 @@ class SwaggerFormatterTest extends WebTestCase
                                                     array(
                                                         'code'          => 200,
                                                         'message'       => 'Returned on success.',
-                                                        'responseModel' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.Test[tests]',
+                                                        'responseModel' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.Test[tests]',
                                                     ),
                                                     array(
                                                         'code'    => 404,
                                                         'message' => 'Returned if resource cannot be found.',
                                                     ),
                                                 ),
-                                            'type'             => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.Test[tests]',
+                                            'type'             => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.Test[tests]',
                                         ),
                                         array(
                                             'method'           => 'POST',
@@ -321,16 +321,16 @@ class SwaggerFormatterTest extends WebTestCase
                                                         array(
                                                             'code'          => 200,
                                                             'message'       => 'See standard HTTP status code reason for 200',
-                                                            'responseModel' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
+                                                            'responseModel' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
                                                         ),
                                                     1 =>
                                                         array(
                                                             'code'          => 400,
                                                             'message'       => 'See standard HTTP status code reason for 400',
-                                                            'responseModel' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Form.SimpleType.ErrorResponse'
+                                                            'responseModel' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Form.SimpleType.ErrorResponse'
                                                         ),
                                                 ),
-                                            'type'             => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
+                                            'type'             => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
                                         ),
                                     ),
                             ),
@@ -402,9 +402,9 @@ class SwaggerFormatterTest extends WebTestCase
                         ),
                     'models'         =>
                         array(
-                            'Nelmio.ApiDocBundle.Tests.Fixtures.Model.Test'                          =>
+                            'Nayzo.ApiDocBundle.Tests.Fixtures.Model.Test'                          =>
                                 array(
-                                    'id'          => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.Test',
+                                    'id'          => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.Test',
                                     'description' => null,
                                     'properties'  =>
                                         array(
@@ -425,9 +425,9 @@ class SwaggerFormatterTest extends WebTestCase
                                             'a',
                                         ),
                                 ),
-                            'Nelmio.ApiDocBundle.Tests.Fixtures.Model.Test[tests]'                   =>
+                            'Nayzo.ApiDocBundle.Tests.Fixtures.Model.Test[tests]'                   =>
                                 array(
-                                    'id'          => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.Test[tests]',
+                                    'id'          => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.Test[tests]',
                                     'description' => '',
                                     'properties'  =>
                                         array(
@@ -437,7 +437,7 @@ class SwaggerFormatterTest extends WebTestCase
                                                     'description' => null,
                                                     'items'       =>
                                                         array(
-                                                            '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.Test',
+                                                            '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.Test',
                                                         ),
                                                 ),
                                         ),
@@ -446,9 +446,9 @@ class SwaggerFormatterTest extends WebTestCase
                                             'tests',
                                         ),
                                 ),
-                            'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest'                       =>
+                            'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest'                       =>
                                 array(
-                                    'id'          => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest',
+                                    'id'          => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest',
                                     'description' => 'object (JmsTest)',
                                     'properties'  =>
                                         array(
@@ -480,7 +480,7 @@ class SwaggerFormatterTest extends WebTestCase
                                                 ),
                                             'nested'       =>
                                                 array(
-                                                    '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
+                                                    '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
                                                 ),
                                             'nested_array' =>
                                                 array(
@@ -488,16 +488,16 @@ class SwaggerFormatterTest extends WebTestCase
                                                     'description' => 'array of objects (JmsNested)',
                                                     'items'       =>
                                                         array(
-                                                            '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
+                                                            '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
                                                         ),
                                                 ),
                                         ),
                                     'required'    =>
                                         array(),
                                 ),
-                            'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested'                     =>
+                            'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested'                     =>
                                 array(
-                                    'id'          => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
+                                    'id'          => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
                                     'description' => '',
                                     'properties'  =>
                                         array(
@@ -525,11 +525,11 @@ With multiple lines.',
                                                 ),
                                             'circular'        =>
                                                 array(
-                                                    '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
+                                                    '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
                                                 ),
                                             'parent'          =>
                                                 array(
-                                                    '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest',
+                                                    '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest',
                                                 ),
                                             'since'           =>
                                                 array(
@@ -565,19 +565,19 @@ With multiple lines.',
                                     ),
                                     'required'    => array()
                                 ),
-                            'Nelmio.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FormErrors'          =>
+                            'Nayzo.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FormErrors'          =>
                                 array(
-                                    'id'          => 'Nelmio.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FormErrors',
+                                    'id'          => 'Nayzo.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FormErrors',
                                     'description' => 'Errors',
                                     'properties'  => array(
                                         'simple' => array(
-                                            '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FieldErrors[simple]',
+                                            '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FieldErrors[simple]',
                                         )
                                     ),
                                     'required'    => array()
                                 ),
-                            'Nelmio.ApiDocBundle.Tests.Fixtures.Form.SimpleType.ErrorResponse'       => array(
-                                'id'          => 'Nelmio.ApiDocBundle.Tests.Fixtures.Form.SimpleType.ErrorResponse',
+                            'Nayzo.ApiDocBundle.Tests.Fixtures.Form.SimpleType.ErrorResponse'       => array(
+                                'id'          => 'Nayzo.ApiDocBundle.Tests.Fixtures.Form.SimpleType.ErrorResponse',
                                 'description' => '',
                                 'properties'  => array(
                                     'status_code' => array(
@@ -590,14 +590,14 @@ With multiple lines.',
                                         'description' => 'The error message',
                                     ),
                                     'errors'      => array(
-                                        '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FormErrors',
+                                        '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FormErrors',
                                     ),
                                 ),
                                 'required'    => array(),
                             ),
-                            'Nelmio.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FieldErrors[simple]' =>
+                            'Nayzo.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FieldErrors[simple]' =>
                                 array(
-                                    'id'          => 'Nelmio.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FieldErrors[simple]',
+                                    'id'          => 'Nayzo.ApiDocBundle.Tests.Fixtures.Form.SimpleType.FieldErrors[simple]',
                                     'description' => 'Errors on the parameter',
                                     'properties'  => array(
                                         'a' => array(
@@ -678,10 +678,10 @@ With multiple lines.',
                                                     array(
                                                         'code'          => 200,
                                                         'message'       => 'See standard HTTP status code reason for 200',
-                                                        'responseModel' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest[]',
+                                                        'responseModel' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest[]',
                                                     ),
                                                 ),
-                                            'type'             => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest[]',
+                                            'type'             => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest[]',
                                         ),
                                     ),
                             ),
@@ -753,9 +753,9 @@ With multiple lines.',
                         ),
                     'models'         =>
                         array(
-                            'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest'   =>
+                            'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest'   =>
                                 array(
-                                    'id'          => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest',
+                                    'id'          => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest',
                                     'description' => null,
                                     'properties'  =>
                                         array(
@@ -787,7 +787,7 @@ With multiple lines.',
                                                 ),
                                             'nested'       =>
                                                 array(
-                                                    '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
+                                                    '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
                                                 ),
                                             'nested_array' =>
                                                 array(
@@ -795,16 +795,16 @@ With multiple lines.',
                                                     'description' => 'array of objects (JmsNested)',
                                                     'items'       =>
                                                         array(
-                                                            '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
+                                                            '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
                                                         ),
                                                 ),
                                         ),
                                     'required'    =>
                                         array(),
                                 ),
-                            'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested' =>
+                            'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested' =>
                                 array(
-                                    'id'          => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
+                                    'id'          => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
                                     'description' => 'object (JmsNested)',
                                     'properties'  =>
                                         array(
@@ -832,11 +832,11 @@ With multiple lines.',
                                                 ),
                                             'circular'        =>
                                                 array(
-                                                    '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
+                                                    '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsNested',
                                                 ),
                                             'parent'          =>
                                                 array(
-                                                    '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest',
+                                                    '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest',
                                                 ),
                                             'since'           =>
                                                 array(
@@ -857,9 +857,9 @@ With multiple lines.',
                                     'required'    =>
                                         array(),
                                 ),
-                            'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest[]' =>
+                            'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest[]' =>
                                 array(
-                                    'id'          => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest[]',
+                                    'id'          => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest[]',
                                     'description' => '',
                                     'properties'  =>
                                         array(
@@ -869,7 +869,7 @@ With multiple lines.',
                                                     'description' => null,
                                                     'items'       =>
                                                         array(
-                                                            '$ref' => 'Nelmio.ApiDocBundle.Tests.Fixtures.Model.JmsTest',
+                                                            '$ref' => 'Nayzo.ApiDocBundle.Tests.Fixtures.Model.JmsTest',
                                                         ),
                                                 ),
                                         ),

@@ -1,4 +1,4 @@
-NelmioApiDocBundle
+NayzoApiDocBundle
 ===================
 
 ##Swagger support##
@@ -66,7 +66,7 @@ Swagger provides you the ability to specify alternate output models for differen
      *     	200 = "FooBundle\Entity\User",
      *         400 = {
      *             "class"="CommonBundle\Model\ValidationErrors",
-     *             "parsers"={"Nelmio\ApiDocBundle\Parser\JmsMetadataParser"}
+     *             "parsers"={"Nayzo\ApiDocBundle\Parser\JmsMetadataParser"}
      *         }
      *     }
      *  )
@@ -89,14 +89,14 @@ You could import the routes for use with [`swagger-ui`](https://github.com/wordn
 ```yml
 #app/config/routing.yml
 
-nelmio_api_swagger:
-    resource: "@NelmioApiDocBundle/Resources/config/swagger_routing.yml"
+nayzo_api_swagger:
+    resource: "@NayzoApiDocBundle/Resources/config/swagger_routing.yml"
     prefix: /api-docs
 ```
 
 Et voila!, simply specify http://yourdomain.com/api-docs in your `swagger-ui` instance and you are good to go.
 
-__Note__: If your `swagger-ui` instance does not live under the same domain, you will probably encounter some problems related to same-origin policy violations. [NelmioCorsBundle](https://github.com/nelmio/NelmioCorsBundle) can solve this problem for you. Read through how to allow cross-site requests for the `/api-docs/*` pages.
+__Note__: If your `swagger-ui` instance does not live under the same domain, you will probably encounter some problems related to same-origin policy violations. [NayzoCorsBundle](https://github.com/nayzo/NayzoCorsBundle) can solve this problem for you. Read through how to allow cross-site requests for the `/api-docs/*` pages.
 
 ### Dumping the Swagger-compliant JSON API definitions
 
@@ -146,7 +146,7 @@ You can also change the `model_naming_strategy` in the configuration to `last_se
 ##Configuration reference
 
 ```yml
-nelmio_api_doc:
+nayzo_api_doc:
 	swagger:
         api_base_path:        /api
         swagger_version:      1.2

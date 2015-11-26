@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the NelmioApiDocBundle.
+ * This file is part of the NayzoApiDocBundle.
  *
- * (c) Nelmio <hello@nelm.io>
+ * (c) Nayzo <alakhefifi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace NelmioApiDocBundle\Tests\Parser;
+namespace NayzoApiDocBundle\Tests\Parser;
 
-use Nelmio\ApiDocBundle\DataTypes;
-use Nelmio\ApiDocBundle\Parser\DunglasApiParser;
-use Nelmio\ApiDocBundle\Tests\WebTestCase;
+use Nayzo\ApiDocBundle\DataTypes;
+use Nayzo\ApiDocBundle\Parser\DunglasApiParser;
+use Nayzo\ApiDocBundle\Tests\WebTestCase;
 
 /**
  * @author Kévin Dunglas <dunglas@gmail.com>
@@ -32,9 +32,9 @@ class DunglasApiParserTest extends WebTestCase
     public function testParser()
     {
         $container = $this->getContainer();
-        $parser = $container->get('nelmio_api_doc.parser.dunglas_api_parser');
+        $parser = $container->get('nayzo_api_doc.parser.dunglas_api_parser');
 
-        $item = array('class' => DunglasApiParser::OUT_PREFIX.':Nelmio\ApiDocBundle\Tests\Fixtures\Model\Popo');
+        $item = array('class' => DunglasApiParser::OUT_PREFIX.':Nayzo\ApiDocBundle\Tests\Fixtures\Model\Popo');
 
         $expected = array (
             'foo' =>
