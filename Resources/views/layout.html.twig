@@ -578,6 +578,9 @@
                                 params[key] = parseFloat(params[key]);
                             }
                             break;
+                        case 'object':
+                            params[key] = JSON.parse(params[key]);
+                            break;
                     }
 
                     bodyArray[obj][index] = params[key];
