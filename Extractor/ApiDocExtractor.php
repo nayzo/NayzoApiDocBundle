@@ -173,7 +173,7 @@ class ApiDocExtractor
             }
         }
 
-        $methodOrder = array('GET', 'POST', 'PUT', 'DELETE');
+        $methodOrder = array('GET', 'POST', 'PUT', 'DELETE', 'PATCH');
         usort($array, function ($a, $b) use ($methodOrder) {
             if ($a['resource'] === $b['resource']) {
                 if ($a['annotation']->getRoute()->getPath() === $b['annotation']->getRoute()->getPath()) {
@@ -181,10 +181,17 @@ class ApiDocExtractor
                     $methodB = array_search($b['annotation']->getRoute()->getMethods(), $methodOrder);
 
                     if ($methodA === $methodB) {
-                        return strcmp(
-                            $a['annotation']->getRoute()->getMethods(),
-                            $b['annotation']->getRoute()->getMethods()
-                        );
+                        if (is_array($a['annotation']->getRoute()->getMethods())) {
+                            return strcmp(
+                                $a['annotation']->getRoute()->getMethods()[0],
+                                $b['annotation']->getRoute()->getMethods()[0]
+                            );
+                        } else {
+                            return strcmp(
+                                $a['annotation']->getRoute()->getMethods(),
+                                $b['annotation']->getRoute()->getMethods()
+                            );
+                        }
                     }
 
                     return $methodA > $methodB ? 1 : -1;
