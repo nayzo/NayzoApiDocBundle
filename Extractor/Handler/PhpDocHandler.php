@@ -61,7 +61,7 @@ class PhpDocHandler implements HandlerInterface
                     $tab = array_merge($tab, $annotation->schemaFormat($property->properties, $property->required, $objectName));
                 } else {
                     $required = json_decode(file_get_contents($path))->required;
-                    $tab = array_merge($tab, $annotation->schemaFormat($properties, $required));
+                    $tab = array_merge($tab, $annotation->schemaFormat((object)[$objectName->$property], $required));
                 }
             }
 
