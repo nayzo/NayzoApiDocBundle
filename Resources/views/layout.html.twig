@@ -539,51 +539,55 @@
             var bodyArray = {};
             for (var key in params) {
                 if (key != '_format') {
-                    var obj = key.substr(0, key.indexOf(":")).replace(" ", "");
-                    var index = key.substr(key.indexOf(":") + 1, key.length).replace(" ", "");
-                    if (bodyArray[obj] == undefined) {
-                        bodyArray[obj] = {};
-                    }
-                    pointerKey = obj + ' : ' + index;
-                    plKey = $(this).find('input[value="' + pointerKey + '"]').next().next().next().attr('placeholder');
-                    if (plKey == undefined) {
-                        keyType = 'boolean';
+                    if (!key.substr(0, key.indexOf(":"))) {
+                        bodyArray[key] = JSON.parse(params[key]);
                     } else {
-                        keyType = plKey.substr(plKey.indexOf('[') + 1, plKey.indexOf(']') - 1);
-                    }
-
-                    if (-1 !== keyType.indexOf('|')) {
-                        splitKeyType = keyType.split('|');
-                        if (-1 === $.inArray('string', splitKeyType)) {
-                            keyType = splitKeyType[0];
+                        var obj = key.substr(0, key.indexOf(":")).replace(" ", "");
+                        var index = key.substr(key.indexOf(":") + 1, key.length).replace(" ", "");
+                        if (bodyArray[obj] == undefined) {
+                            bodyArray[obj] = {};
                         }
-                    }
+                        pointerKey = obj + ' : ' + index;
+                        plKey = $(this).find('input[value="' + pointerKey + '"]').next().next().next().attr('placeholder');
+                        if (plKey == undefined) {
+                            keyType = 'boolean';
+                        } else {
+                            keyType = plKey.substr(plKey.indexOf('[') + 1, plKey.indexOf(']') - 1);
+                        }
 
-                    switch (keyType) {
-                        case 'integer':
-                            if (!isNaN(parseInt(params[key]))) {
-                                params[key] = parseInt(params[key]);
+                        if (-1 !== keyType.indexOf('|')) {
+                            splitKeyType = keyType.split('|');
+                            if (-1 === $.inArray('string', splitKeyType)) {
+                                keyType = splitKeyType[0];
                             }
-                            break;
-                        case 'boolean':
-                            if (parseInt(params[key]) === 1) {
-                                params[key] = true;
-                            } else {
-                                params[key] = false;
-                            }
-                            break;
-                        case 'number':
-                        case 'double':
-                            if (!isNaN(parseFloat(params[key]))) {
-                                params[key] = parseFloat(params[key]);
-                            }
-                            break;
-                        case 'object':
-                            params[key] = JSON.parse(params[key]);
-                            break;
-                    }
+                        }
 
-                    bodyArray[obj][index] = params[key];
+                        switch (keyType) {
+                            case 'integer':
+                                if (!isNaN(parseInt(params[key]))) {
+                                    params[key] = parseInt(params[key]);
+                                }
+                                break;
+                            case 'boolean':
+                                if (parseInt(params[key]) === 1) {
+                                    params[key] = true;
+                                } else {
+                                    params[key] = false;
+                                }
+                                break;
+                            case 'number':
+                            case 'double':
+                                if (!isNaN(parseFloat(params[key]))) {
+                                    params[key] = parseFloat(params[key]);
+                                }
+                                break;
+                            case 'object':
+                                params[key] = JSON.parse(params[key]);
+                                break;
+                        }
+
+                        bodyArray[obj][index] = params[key];
+                    }
                 }
             }
             body = JSON.stringify(bodyArray);
