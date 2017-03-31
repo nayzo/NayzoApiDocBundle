@@ -278,8 +278,8 @@ class ApiDocExtractor
     /**
      * Returns a new ApiDoc instance with more data.
      *
-     * @param  ApiDoc            $annotation
-     * @param  Route             $route
+     * @param  ApiDoc $annotation
+     * @param  Route $route
      * @param  \ReflectionMethod $method
      * @return ApiDoc
      */
@@ -337,21 +337,23 @@ class ApiDocExtractor
             $response = array();
             $supportedParsers = array();
 
-            if (strpos(strtolower($output), '.json')) {
+            if (strpos(strtolower($output), '.json') !== false) {
                 $path = 'file://' . realpath($this->schemaPath . $output);
-                $properties = (array) json_decode(file_get_contents($path))->properties;
+                if ('object' == json_decode(file_get_contents($path))->type) {
+                    $properties = (array)json_decode(file_get_contents($path))->properties;
 
-                foreach ($properties as $objectName => $property) {
-                    if (isset($property->properties)) {
-                        $response = array_merge($response, $annotation->schemaFormat($property->properties, $property->required, $objectName));
-                    } else {
-                        $required = json_decode(file_get_contents($path))->required;
-                        $response = array_merge($response, $annotation->schemaFormat($properties, $required));
+                    foreach ($properties as $objectName => $property) {
+                        if (isset($property->properties)) {
+                            $response = array_merge($response, $annotation->schemaFormat($property->properties, $property->required, $objectName));
+                        } else {
+                            $required = json_decode(file_get_contents($path))->required;
+                            $response = array_merge($response, $annotation->schemaFormat($properties, $required));
+                        }
                     }
-                }
 
-                $annotation->setResponse($response);
-                $annotation->setResponseForStatusCode($response, [], 200);
+                    $annotation->setResponse($response);
+                    $annotation->setResponseForStatusCode($response, [], 200);
+                }
             } else {
                 $normalizedOutput = $this->normalizeClassParameter($output);
 
@@ -381,7 +383,7 @@ class ApiDocExtractor
 
             foreach ($annotation->getResponseMap() as $code => $modelName) {
 
-                if ('200' === (string) $code && isset($modelName['type']) && isset($modelName['model'])) {
+                if ('200' === (string)$code && isset($modelName['type']) && isset($modelName['model'])) {
                     /*
                      * Model was already parsed as the default `output` for this ApiDoc.
                      */
@@ -524,8 +526,8 @@ class ApiDocExtractor
      * Parses annotations for a given method, and adds new information to the given ApiDoc
      * annotation. Useful to extract information from the FOSRestBundle annotations.
      *
-     * @param ApiDoc           $annotation
-     * @param Route            $route
+     * @param ApiDoc $annotation
+     * @param Route $route
      * @param ReflectionMethod $method
      */
     protected function parseAnnotations(ApiDoc $annotation, Route $route, \ReflectionMethod $method)
